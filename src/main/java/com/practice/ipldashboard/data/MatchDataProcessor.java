@@ -39,7 +39,7 @@ public class MatchDataProcessor implements ItemProcessor<MatchInput,MatchData> {
         matchData.setUmpire1(matchInput.getUmpire1());
         matchData.setUmpire2(matchInput.getUmpire2());
         matchData.setVenue(matchInput.getVenue());
-        matchData.setWinner(matchInput.getWinner());
+        matchData.setMatchWinner(matchInput.getMatchWinner());
         log.info("Converting {} to {}",matchInput,matchData);
         return matchData;
     }

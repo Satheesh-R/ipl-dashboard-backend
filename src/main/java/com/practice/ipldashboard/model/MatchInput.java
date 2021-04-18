@@ -1,6 +1,5 @@
 package com.practice.ipldashboard.model;
 
-import java.time.LocalDate;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,7 +15,7 @@ import lombok.ToString;
 public class MatchInput {
    private Long id;
    private String city;
-   private LocalDate date;
+   private String date;
    private String playerOfMatch;
    private String venue;
    private String neutralVenue;
@@ -24,7 +23,7 @@ public class MatchInput {
    private String team2;
    private String tossWinner;
    private String tossDecision;
-   private String winner;
+   private String matchWinner;
    private String result;
    private String resultMargin;
    private String eliminator;

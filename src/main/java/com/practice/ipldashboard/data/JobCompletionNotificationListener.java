@@ -23,7 +23,7 @@ public class JobCompletionNotificationListener extends JobExecutionListenerSuppo
     public void afterJob(JobExecution jobExecution){
         if(jobExecution.getStatus() == BatchStatus.COMPLETED){
             log.info("BATCH JOB FINISHED, VERIFICATION STARTED");
-            jdbcTemplate.query("SELECT team1, team2, date FROM matchdata",
+            jdbcTemplate.query("SELECT team1, team2, date FROM match_data",
                               (rs,row) -> "Team 1"+rs.getString(1) + " Team 2 "+rs.getString(2)+" Date "+rs.getString(3)
                               ).forEach(matchData -> log.info("Found < {} > in the databse",matchData));
         }

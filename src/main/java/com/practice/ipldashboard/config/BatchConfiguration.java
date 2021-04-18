@@ -37,7 +37,7 @@ public class BatchConfiguration {
     @Bean
     public FlatFileItemReader<MatchInput> reader() {
         return new FlatFileItemReaderBuilder<MatchInput>().name("MatchItemReader")
-                .resource(new ClassPathResource("match-data.csv")).delimited()
+                .resource(new ClassPathResource("match_data.csv")).delimited()
                 .names(BatchProcessingConstants.FIELD_NAMES)
                 .fieldSetMapper(new BeanWrapperFieldSetMapper<MatchInput>() {
                     {
@@ -55,7 +55,7 @@ public class BatchConfiguration {
     public JdbcBatchItemWriter<MatchData> writer(DataSource dataSource) {
         return new JdbcBatchItemWriterBuilder<MatchData>()
                 .itemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<>())
-                .sql("INSERT INTO match (id, city, date, player_of_match, venue, team1, team2, toss_winner, toss_decision, match_winner, result, result_margin, umpire1, umpire2) "
+                .sql("INSERT INTO match_data (id, city, date, player_of_match, venue, team1, team2, toss_winner, toss_decision, match_winner, result, result_margin, umpire1, umpire2) "
                         + " VALUES (:id, :city, :date, :playerOfMatch, :venue, :team1, :team2, :tossWinner, :tossDecision, :matchWinner, :result, :resultMargin, :umpire1, :umpire2)")
                 .dataSource(dataSource).build();
     }

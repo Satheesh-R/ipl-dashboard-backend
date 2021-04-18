@@ -25,7 +25,7 @@ public class MatchData {
     private String team2;
     private String tossWinner;
     private String tossDecision;
-    private String winner;
+    private String matchWinner;
     private String result;
     private String resultMargin;
     private String umpire1;
