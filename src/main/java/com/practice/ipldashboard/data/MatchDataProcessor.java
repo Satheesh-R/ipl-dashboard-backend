@@ -1,4 +1,4 @@
-package com.practice.ipldashboard.service;
+package com.practice.ipldashboard.data;
 
 import com.practice.ipldashboard.model.MatchData;
 import com.practice.ipldashboard.model.MatchInput;
