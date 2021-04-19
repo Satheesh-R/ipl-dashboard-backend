@@ -1,5 +1,7 @@
 package com.practice.ipldashboard.data;
 
+import java.time.LocalDate;
+
 import com.practice.ipldashboard.model.MatchData;
 import com.practice.ipldashboard.model.MatchInput;
 
@@ -26,8 +28,8 @@ public class MatchDataProcessor implements ItemProcessor<MatchInput,MatchData> {
         }
         matchData.setId(matchInput.getId());
         matchData.setCity(matchInput.getCity());
-        matchData.setDate(matchData.getDate());
-        matchData.setNeutralVenue(matchInput.getNeutralVenue());
+        matchData.setDate(LocalDate.parse(matchInput.getDate()));
+        matchData.setNeutralVenue(Integer.parseInt(matchInput.getNeutralVenue()));
         matchData.setPlayerOfMatch(matchInput.getPlayerOfMatch());
         matchData.setResult(matchInput.getPlayerOfMatch());
         matchData.setResult(matchInput.getResult());
