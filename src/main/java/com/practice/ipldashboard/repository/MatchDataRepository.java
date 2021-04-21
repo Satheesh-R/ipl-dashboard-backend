@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.practice.ipldashboard.model.MatchData;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -16,4 +17,5 @@ public interface MatchDataRepository extends JpaRepository<MatchData,Long> {
     List<Object[]> findDistinctTeam2();
     @Query(value="select distinct m.matchWinner,count(m) from MatchData m group by m.matchWinner")
     List<Object[]> findTeamWins();
+    List<MatchData> findByTeam1OrTeam2OrderByDateDesc(String team1,String team2,Pageable pageable);
 }
