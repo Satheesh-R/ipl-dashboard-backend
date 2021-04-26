@@ -1,5 +1,6 @@
 package com.practice.ipldashboard.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import com.practice.ipldashboard.constant.ExceptionMessageConstants;
@@ -23,16 +24,23 @@ public class TeamServiceImpl implements TeamService {
 
     public Team getTeamByName(String teamName) throws TeamNameNotFoundException {
         Team team = teamRepository.findByTeamName(teamName);
-        if(team != null){
+        if (team != null) {
             Pageable pageable = PageRequest.of(0, 4);
             List<MatchData> matchDataOfTeam = matchDataRepository.findByTeam1OrTeam2OrderByDateDesc(teamName, teamName,
                     pageable);
             team.setMatches(matchDataOfTeam);
             return team;
-        }
-        else{
+        } else {
             throw new TeamNameNotFoundException(ExceptionMessageConstants.TEAM_NOT_FOUND_ERROR_MESSAGE);
         }
+    }
+
+    public List<MatchData> getMatchesForTeam(String teamName, int year) {
+        LocalDate startDate = LocalDate.of(year, 01, 01);
+        LocalDate endDate = LocalDate.of(year + 1, 01, 01);
+        List<MatchData> teamMatchData = matchDataRepository.findMatchesByTeamBetweenDates(teamName,
+                startDate,endDate);
+        return teamMatchData;
     }
 
 }
