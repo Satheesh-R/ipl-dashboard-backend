@@ -30,4 +30,9 @@ public class TeamController {
     public List<MatchData> getMatchesForTeam(@PathVariable String teamName,@RequestParam int year){
         return teamService.getMatchesForTeam(teamName, year);
     }
+
+    @GetMapping("/team")
+    public Iterable<Team> getAllTeams(){
+        return teamService.getAllTeams();
+    }
 }

@@ -15,6 +15,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 public class TeamServiceImpl implements TeamService {
     @Autowired
@@ -36,11 +39,17 @@ public class TeamServiceImpl implements TeamService {
     }
 
     public List<MatchData> getMatchesForTeam(String teamName, int year) {
+        log.info("INSIDE GET MATCHES FOR TEAM SERVICE");
         LocalDate startDate = LocalDate.of(year, 01, 01);
         LocalDate endDate = LocalDate.of(year + 1, 01, 01);
         List<MatchData> teamMatchData = matchDataRepository.findMatchesByTeamBetweenDates(teamName,
                 startDate,endDate);
+        log.info("END OF GET MATCHES FOR TEAM SERVICE");
         return teamMatchData;
+    }
+
+    public List<Team> getAllTeams(){
+        return teamRepository.findAll();
     }
 
 }

@@ -10,4 +10,6 @@ public interface TeamService {
     Team getTeamByName(String teamName) throws TeamNameNotFoundException;
 
     List<MatchData> getMatchesForTeam(String teamName, int year);
+
+    List<Team> getAllTeams();
 }
